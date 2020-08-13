@@ -38,14 +38,16 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
   **/
   
   @Override
-  public void fun onPause() {
-    window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-    super.onPause();
+  public void onPause(CordovaInterface cordova, CordovaWebView webView) {
+    Activity activity = this.cordova.getActivity();
+    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+    super.onPause(cordova, webView);
   }
   
   @Override
-  public void fun onResume() {
-    super.onResume();
-    window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE),
+  public void onResume(CordovaInterface cordova, CordovaWebView webView) {
+    super.onResume(cordova, webView);
+    Activity activity = this.cordova.getActivity();
+    activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE),
   }
 }
