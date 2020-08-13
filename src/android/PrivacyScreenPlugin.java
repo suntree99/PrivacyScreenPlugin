@@ -28,10 +28,24 @@ import android.os.Bundle;
  */
 public class PrivacyScreenPlugin extends CordovaPlugin {
 
+  /**
   @Override
   public void initialize(CordovaInterface cordova, CordovaWebView webView) {
     super.initialize(cordova, webView);
     Activity activity = this.cordova.getActivity();
     activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+  }
+  **/
+  
+  @Override
+  public void fun onPause() {
+    window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+    super.onPause();
+  }
+  
+  @Override
+  public void fun onResume() {
+    super.onResume();
+    window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE),
   }
 }
