@@ -39,10 +39,10 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
    @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("addFlag")) {
-            this.addFlag(callbackContext);
+            this.addFlag();
             return true;
         } else if (action.equals("removeFlag")) {
-            this.removeFlag(callbackContext);
+            this.removeFlag();
             return true;
           }
         return false;
