@@ -3,8 +3,6 @@
  * Created by Tommy-Carlos Williams on 18/07/14.
  * Copyright (c) 2014 Tommy-Carlos Williams. All rights reserved.
  * MIT Licensed
- *
- * Updated by Patrícia Ferreira on 14/08/2020
  */
 package org.devgeeks.privacyscreen;
 
@@ -30,32 +28,16 @@ import android.os.Bundle;
  */
 public class PrivacyScreenPlugin extends CordovaPlugin {
   @Override
-  public void initialize(CordovaInterface cordova, CordovaWebView webView) {
-    super.initialize(cordova, webView);
+  protected void onPause() {
+    super.onPause();
     Activity activity = this.cordova.getActivity();
-    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+    activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
   }
-  
-   @Override
-    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        if (action.equals("addFlag")) {
-            this.addFlag();
-            return true;
-        } else if (action.equals("removeFlag")) {
-            this.removeFlag();
-            return true;
-          }
-        return false;
-      }
 
-  private void addFlag() {
-    Activity activity = this.cordova.getActivity();
-    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-  }
-  
-  private void removeFlag() {
+  @Override
+  protected void onResume() {
+    super.onResume();
     Activity activity = this.cordova.getActivity();
     activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
-      
   }
 }
