@@ -10,10 +10,10 @@ var PLUGIN_NAME = 'PrivacySecurePlugin';
 * Methods only required for Android
 */
 
-exports.addFlag = function(success, error) {
-    exec(success, error, PLUGIN_NAME, "addFlag", []);
-};
+// exports.addFlag = function(success, error) {
+//     exec(success, error, PLUGIN_NAME, "addFlag", []);
+// };
 
-exports.removeFlag = function(success, error) {
-    exec(success, error, PLUGIN_NAME, "removeFlag", []);
-};
+// exports.removeFlag = function(success, error) {
+//     exec(success, error, PLUGIN_NAME, "removeFlag", []);
+// };
