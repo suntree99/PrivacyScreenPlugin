@@ -1,8 +1,19 @@
-//var exec = require('cordova/exec');
-
-/** 
- * Not sure this will even have a JS API
+/**
+ * Updated by Patrícia Ferreira on 14/08/2020
  */
-//exports.activate = function(arg, success, error) {
-  //exec(success, error, "PrivacyScreenPlugin", "activate", [arg]);
-//};
+
+var exec = require('cordova/exec');
+
+var PLUGIN_NAME = 'PrivacySecurePlugin';
+
+/**
+* Methods only required for Android
+*/
+
+exports.addFlag = function(success, error) {
+    exec(success, error, PLUGIN_NAME, "addFlag", []);
+};
+
+exports.removeFlag = function(success, error) {
+    exec(success, error, PLUGIN_NAME, "removeFlag", []);
+};

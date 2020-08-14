@@ -3,12 +3,19 @@
  * Created by Tommy-Carlos Williams on 18/07/2014
  * Copyright (c) 2014 Tommy-Carlos Williams. All rights reserved.
  * MIT Licensed
+ *
+ * Updated by Patrícia Ferreira on 14/08/2020
  */
 #import "PrivacyScreenPlugin.h"
 
 static UIImageView *imageView;
+static PrivacyScreenPlugin *privacyScreenPlugin;
 
 @implementation PrivacyScreenPlugin
+
++ (PrivacyScreenPlugin *) privacyScreenPlugin {
+    return privacyScreenPlugin;
+}
 
 - (void)pluginInitialize
 {
@@ -191,5 +198,16 @@ static UIImageView *imageView;
     return imageName;
 }
 
+- (void)addFlag:(CDVInvokedUrlCommand *)command {
+  __block CDVPluginResult *pluginResult;
+  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:instID];
+  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (void)removeFlag:(CDVInvokedUrlCommand *)command {
+  __block CDVPluginResult *pluginResult;
+  pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:instID];
+  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
 
 @end
