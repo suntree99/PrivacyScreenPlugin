@@ -48,23 +48,14 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
         return false;
       }
 
-  private void addFlag(final CallbackContext callbackContext) {
-    try{
-      Activity activity = this.cordova.getActivity();
-      activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-      callbackContext.success();
-    } catch (Exception e) {
-      callbackContext.error(e.getMessage());
-    }
+  private void addFlag() {
+    Activity activity = this.cordova.getActivity();
+    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
   }
   
-  private void removeFlag(final CallbackContext callbackContext) {
-    try{
-      Activity activity = this.cordova.getActivity();
-      activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
-      callbackContext.success();
-    } catch (Exception e) {
-      callbackContext.error(e.getMessage());
-    }
+  private void removeFlag() {
+    Activity activity = this.cordova.getActivity();
+    activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+      
   }
 }
