@@ -45,7 +45,8 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
             this.removeFlag(callbackContext);
             return true;
           }
-        }
+        return false;
+      }
 
   private void addFlag(final CallbackContext callbackContext) {
     try{
