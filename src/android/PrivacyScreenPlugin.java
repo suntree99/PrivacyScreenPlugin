@@ -29,12 +29,12 @@ import android.view.WindowManager;
  */
 public class PrivacyScreenPlugin extends CordovaPlugin {
 
-  // @Override
-  // public void initialize(boolean multitasking) {
-  //   Window window = this.cordova.getActivity().getWindow();
-  //   window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-  //   super.initialize(multitasking);
-  // }
+  @Override
+  public void initialize(boolean multitasking) {
+    Window window = this.cordova.getActivity().getWindow();
+    window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+    super.initialize(multitasking);
+  }
 
   @Override
   public void onPause(boolean multitasking) {
