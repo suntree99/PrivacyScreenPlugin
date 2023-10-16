@@ -5,37 +5,36 @@
 	<description>Secures your app from displaying a screenshot in task switchers under Android and iOS. Keeps sensitive information private.</description>
 	<license>MIT</license>
 
-  <engines>
+<!--   <engines>
     <engine name="cordova" version=">=3.2.0" />
   </engines>
 
   <js-module name="PrivacyScreenPlugin" src="www/PrivacyScreenPlugin.js">
     <clobbers target="psp" />
-  </js-module>
+  </js-module> -->
 
+    <platform name="android">
 
-	<platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="PrivacyScreenPlugin">
+                <param name="android-package" value="org.devgeeks.privacyscreen.PrivacyScreenPlugin"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
 
-    <config-file parent="/*" target="res/xml/config.xml">
-      <feature name="PrivacyScreenPlugin">
-        <param name="android-package" value="org.devgeeks.privacyscreen.PrivacyScreenPlugin"/>
-        <param name="onload" value="true" />
-      </feature>
-    </config-file>
+        <source-file src="src/android/PrivacyScreenPlugin.java" target-dir="src/org/devgeeks/privacyscreen"/>
+    </platform>
 
-		<source-file src="src/android/PrivacyScreenPlugin.java" target-dir="src/org/devgeeks/privacyscreen"/>
-	</platform>
+    <platform name="ios">
 
-	<platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="PrivacyScreenPlugin">
+                <param name="ios-package" value="PrivacyScreenPlugin"/>
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
 
-    <config-file parent="/*" target="config.xml">
-      <feature name="PrivacyScreenPlugin">
-        <param name="ios-package" value="PrivacyScreenPlugin"/>
-        <param name="onload" value="true" />
-      </feature>
-    </config-file>
-
-		<header-file src="src/ios/PrivacyScreenPlugin.h"/>
-		<source-file src="src/ios/PrivacyScreenPlugin.m"/>
-	</platform>
+        <header-file src="src/ios/PrivacyScreenPlugin.h"/>
+        <source-file src="src/ios/PrivacyScreenPlugin.m"/>
+    </platform>
 </plugin>
