@@ -9,9 +9,9 @@
     <engine name="cordova" version=">=3.2.0" />
   </engines>
 
-<!--   <js-module name="PrivacyScreenPlugin" src="www/PrivacyScreenPlugin.js">
+  <js-module name="PrivacyScreenPlugin" src="www/PrivacyScreenPlugin.js">
     <clobbers target="psp" />
-  </js-module> -->
+  </js-module>
 
     <platform name="android">
 
