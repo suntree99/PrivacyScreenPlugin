@@ -37,10 +37,10 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
   // }
 
   @Override
-  public void onCreate(boolean multitasking) {
+  public void onStart(boolean multitasking) {
     Window window = this.cordova.getActivity().getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-    super.onCreate(multitasking);
+    super.onStart(multitasking);
   }
 
   // @Override
