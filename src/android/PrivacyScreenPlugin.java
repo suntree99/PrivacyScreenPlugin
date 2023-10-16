@@ -39,7 +39,7 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
   @Override
   public void onPause(boolean multitasking) {
     Window window = this.cordova.getActivity().getWindow();
-    window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+    // window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
     window.addFlags(WindowManager.LayoutParams.FLAG_PRIVATE);
     super.onPause(multitasking);
   }
@@ -47,7 +47,7 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
   @Override
   public void onResume(boolean multitasking) {
     Window window = this.cordova.getActivity().getWindow();
-    window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+    // window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
     window.clearFlags(WindowManager.LayoutParams.FLAG_PRIVATE);
     super.onResume(multitasking);
   }
