@@ -36,17 +36,17 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
     activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
   }
 
-  @Override
-  public void onPause(boolean multitasking) {
-    Window window = this.cordova.getActivity().getWindow();
-    window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-    super.onPause(multitasking);
-  }
+  // @Override
+  // public void onPause(boolean multitasking) {
+  //   Window window = this.cordova.getActivity().getWindow();
+  //   window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+  //   super.onPause(multitasking);
+  // }
 
-  @Override
-  public void onResume(boolean multitasking) {
-    Window window = this.cordova.getActivity().getWindow();
-    window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
-    super.onResume(multitasking);
-  }
+  // @Override
+  // public void onResume(boolean multitasking) {
+  //   Window window = this.cordova.getActivity().getWindow();
+  //   window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+  //   super.onResume(multitasking);
+  // }
 }
