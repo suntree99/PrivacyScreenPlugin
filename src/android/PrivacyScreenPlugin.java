@@ -36,6 +36,10 @@ import android.widget.Toast;
  * This class sets the FLAG_SECURE flag on the window to make the app
  *  private when shown in the task switcher
  */
+public class CordovaPlugin extends AppCompatActivity {
+  
+}
+
 public class PrivacyScreenPlugin extends CordovaPlugin {
 
   // @Override
@@ -64,9 +68,17 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
   // Activity activity = this.cordova.getActivity();
   // Toast toast = Toast.makeText(activity, text, duration);
 
+  @Override  
+  public void onCreate(Bundle savedInstanceState) {  
+      super.onCreate(savedInstanceState);  
+      setContentView(R.layout.activity_main);  
+
+      //Displaying Toast with Hello Javatpoint message  
+      Toast.makeText(getApplicationContext(),"Hello Javatpoint",Toast.LENGTH_SHORT).show();  
+  }  
+
   @Override
   public void onPause(boolean multitasking) {
-    Toast.makeText(getApplicationContext(),"Hello Javatpoint",Toast.LENGTH_SHORT).show();  
     Window window = this.cordova.getActivity().getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
     super.onPause(multitasking);
