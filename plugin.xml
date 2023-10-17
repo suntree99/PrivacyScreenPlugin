@@ -6,7 +6,7 @@
 	<license>MIT</license>
 
   <engines>
-    <engine name="cordova" version=">=12.0.0" />
+    <engine name="cordova" version=">=11.1.0" />
   </engines>
 
   <js-module name="PrivacyScreenPlugin" src="www/PrivacyScreenPlugin.js">
