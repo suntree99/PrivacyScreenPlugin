@@ -55,11 +55,17 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
   //   super.onStart(multitasking);
   // }
 
+  CharSequence text = "Hello toast!";
+  int duration = Toast.LENGTH_SHORT;
+  Toast toast = Toast.makeText(this, text, duration);
+
   @Override
   public void onPause(boolean multitasking) {
-    Logger logger = Logger.getLogger("Test log");
-    logger.info("onPause() triggered");
+    // Logger logger = Logger.getLogger("Test log");
+    // logger.info("onPause() triggered");
     // LOGGER.log(Level.INFO, "onPause() triggered");
+    toast.show();
+    Toast.makeText(context, text, duration).show();
     Window window = this.cordova.getActivity().getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
     super.onPause(multitasking);
@@ -67,7 +73,6 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
 
   @Override
   public void onResume(boolean multitasking) {
-    // LOGGER.log(Level.INFO, "onResume() triggered");
     Window window = this.cordova.getActivity().getWindow();
     window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
     super.onResume(multitasking);
