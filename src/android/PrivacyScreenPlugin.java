@@ -11,7 +11,7 @@ import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;
 
 // import org.apache.cordova.CallbackContext;
-// import android.app.Activity;
+import android.app.Activity;
 
 import android.view.Window;
 import android.view.WindowManager;
