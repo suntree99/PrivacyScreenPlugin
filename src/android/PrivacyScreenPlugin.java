@@ -11,7 +11,7 @@ import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;
 
 // import org.apache.cordova.CallbackContext;
-// import android.app.Activity;
+import android.app.Activity;
 
 import android.view.Window;
 import android.view.WindowManager;
@@ -57,7 +57,8 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
 
   CharSequence text = "Hello toast!";
   int duration = Toast.LENGTH_SHORT;
-  Toast toast = Toast.makeText(this, text, duration);
+  Activity activity = this.cordova.getActivity();
+  Toast toast = Toast.makeText(activity, text, duration);
 
   @Override
   public void onPause(boolean multitasking) {
@@ -65,7 +66,7 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
     // logger.info("onPause() triggered");
     // LOGGER.log(Level.INFO, "onPause() triggered");
     toast.show();
-    Toast.makeText(context, text, duration).show();
+    // Toast.makeText(context, text, duration).show();
     Window window = this.cordova.getActivity().getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
     super.onPause(multitasking);
