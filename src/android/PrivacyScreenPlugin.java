@@ -10,18 +10,18 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;
 
-// import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CallbackContext;
 import android.app.Activity;
 
 import android.view.Window;
 import android.view.WindowManager;
 
-// import org.json.JSONArray;
-// import org.json.JSONException;
-// import org.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-// import android.content.Context;
-// import android.os.Bundle;
+import android.content.Context;
+import android.os.Bundle;
 
 import java.io.IOException; 
 import java.util.logging.Level; 
@@ -37,7 +37,7 @@ import android.widget.Toast;
  *  private when shown in the task switcher
  */
 
-public class PrivacyScreenPlugin extends CordovaPlugin implements AppCompatActivity {
+public class PrivacyScreenPlugin extends CordovaPlugin {
 
   // @Override
   // public void initialize(CordovaInterface cordova, CordovaWebView webView) {
@@ -65,26 +65,46 @@ public class PrivacyScreenPlugin extends CordovaPlugin implements AppCompatActiv
   // Activity activity = this.cordova.getActivity();
   // Toast toast = Toast.makeText(activity, text, duration);
 
-  @Override  
-  public void onCreate(Bundle savedInstanceState) {  
-      super.onCreate(savedInstanceState);  
-      setContentView(R.layout.activity_main);  
+  // @Override  
+  // public void onCreate(Bundle savedInstanceState) {  
+  //     super.onCreate(savedInstanceState);  
+  //     setContentView(R.layout.activity_main);  
 
-      //Displaying Toast with Hello Javatpoint message  
-      Toast.makeText(getApplicationContext(),"Hello Javatpoint",Toast.LENGTH_SHORT).show();  
-  }  
+  //     //Displaying Toast with Hello Javatpoint message  
+  //     Toast.makeText(getApplicationContext(),"Hello Javatpoint",Toast.LENGTH_SHORT).show();  
+  // }  
+
+  // @Override
+  // public void onPause(boolean multitasking) {
+  //   Window window = this.cordova.getActivity().getWindow();
+  //   window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+  //   super.onPause(multitasking);
+  // }
+
+  // @Override
+  // public void onResume(boolean multitasking) {
+  //   Window window = this.cordova.getActivity().getWindow();
+  //   window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+  //   super.onResume(multitasking);
+  // }
 
   @Override
-  public void onPause(boolean multitasking) {
-    Window window = this.cordova.getActivity().getWindow();
-    window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-    super.onPause(multitasking);
-  }
-
-  @Override
-  public void onResume(boolean multitasking) {
-    Window window = this.cordova.getActivity().getWindow();
-    window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
-    super.onResume(multitasking);
-  }
+   public void onWindowFocusChanged(boolean hasFocus) {
+     
+    isWindowFocused = hasFocus;
+  
+    if(hasFocus) {
+          getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+      } else {
+          getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+                  WindowManager.LayoutParams.FLAG_SECURE);
+      }
+  
+    if (isBackPressed && !hasFocus) {
+     isBackPressed = false;
+     isWindowFocused = true;
+    }
+  
+    super.onWindowFocusChanged(hasFocus);
+   }
 }
