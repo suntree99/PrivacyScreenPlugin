@@ -36,7 +36,7 @@ import android.widget.Toast;
  * This class sets the FLAG_SECURE flag on the window to make the app
  *  private when shown in the task switcher
  */
-public class CordovaPlugin extends AppCompatActivity {
+protected class CordovaPlugin extends AppCompatActivity {
   
 }
 
