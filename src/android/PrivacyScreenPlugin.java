@@ -30,7 +30,7 @@ public class PrivacyScreenPlugin extends CordovaActivity {
   @Override
    public void onWindowFocusChanged(boolean hasFocus) {
      
-    boolean isWindowFocused = hasFocus;
+    // isWindowFocused = hasFocus;
   
     if(hasFocus) {
           getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
@@ -38,10 +38,10 @@ public class PrivacyScreenPlugin extends CordovaActivity {
           getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
       }
   
-    if (isBackPressed && !hasFocus) {
-     isBackPressed = false;
-     isWindowFocused = true;
-    }
+    // if (isBackPressed && !hasFocus) {
+    //  isBackPressed = false;
+    //  isWindowFocused = true;
+    // }
   
     super.onWindowFocusChanged(hasFocus);
    }
