@@ -7,25 +7,20 @@
 package org.devgeeks.privacyscreen;
 
 import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.CordovaActivity;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;
-
-import org.apache.cordova.CallbackContext;
-import android.app.Activity;
+import org.apache.cordova.CordovaActivity;
 
 import android.view.Window;
 import android.view.WindowManager;
 
-import android.content.Context;
-import android.os.Bundle;
 
 /**
  * This class sets the FLAG_SECURE flag on the window to make the app
  *  private when shown in the task switcher
  */
 
-public class PrivacyScreenPlugin extends CordovaActivity {
+public class PrivacyScreenPlugin extends CordovaActivity implements CordovaPlugin {
 
   @Override
    public void onWindowFocusChanged(boolean hasFocus) {
