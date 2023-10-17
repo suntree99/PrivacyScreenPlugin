@@ -11,7 +11,7 @@ import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;
 
 // import org.apache.cordova.CallbackContext;
-import android.app.Activity;
+// import android.app.Activity;
 
 import android.view.Window;
 import android.view.WindowManager;
@@ -29,11 +29,18 @@ import android.view.WindowManager;
  */
 public class PrivacyScreenPlugin extends CordovaPlugin {
 
+  // @Override
+  // public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+  //   super.initialize(cordova, webView);
+  //   Activity activity = this.cordova.getActivity();
+  //   activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+  // }
+
   @Override
   public void initialize(CordovaInterface cordova, CordovaWebView webView) {
     super.initialize(cordova, webView);
-    Activity activity = this.cordova.getActivity();
-    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+    Window window = this.cordova.getActivity().getWindow();
+    window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
   }
 
   // @Override
