@@ -17,21 +17,8 @@ import android.app.Activity;
 import android.view.Window;
 import android.view.WindowManager;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.content.Context;
 import android.os.Bundle;
-
-import java.io.IOException; 
-import java.util.logging.Level; 
-import java.util.logging.Logger; 
-import java.util.logging.*;
-
-import android.support.v7.app.AppCompatActivity;  
-import android.os.Bundle;  
-import android.widget.Toast;
 
 /**
  * This class sets the FLAG_SECURE flag on the window to make the app
@@ -40,65 +27,15 @@ import android.widget.Toast;
 
 public class PrivacyScreenPlugin extends CordovaActivity {
 
-  // @Override
-  // public void initialize(CordovaInterface cordova, CordovaWebView webView) {
-  //   super.initialize(cordova, webView);
-  //   Activity activity = this.cordova.getActivity();
-  //   activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-  // }
-
-  // @Override
-  // public void initialize(CordovaInterface cordova, CordovaWebView webView) {
-  //   super.initialize(cordova, webView);
-  //   Window window = this.cordova.getActivity().getWindow();
-  //   window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-  // }
-
-  // @Override
-  // public void onStart(boolean multitasking) {
-  //   Window window = this.cordova.getActivity().getWindow();
-  //   window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-  //   super.onStart(multitasking);
-  // }
-
-  // CharSequence text = "Hello toast!";
-  // int duration = Toast.LENGTH_SHORT;
-  // Activity activity = this.cordova.getActivity();
-  // Toast toast = Toast.makeText(activity, text, duration);
-
-  // @Override  
-  // public void onCreate(Bundle savedInstanceState) {  
-  //     super.onCreate(savedInstanceState);  
-  //     setContentView(R.layout.activity_main);  
-
-  //     //Displaying Toast with Hello Javatpoint message  
-  //     Toast.makeText(getApplicationContext(),"Hello Javatpoint",Toast.LENGTH_SHORT).show();  
-  // }  
-
-  // @Override
-  // public void onPause(boolean multitasking) {
-  //   Window window = this.cordova.getActivity().getWindow();
-  //   window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-  //   super.onPause(multitasking);
-  // }
-
-  // @Override
-  // public void onResume(boolean multitasking) {
-  //   Window window = this.cordova.getActivity().getWindow();
-  //   window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
-  //   super.onResume(multitasking);
-  // }
-
   @Override
    public void onWindowFocusChanged(boolean hasFocus) {
      
-    isWindowFocused = hasFocus;
+    boolean isWindowFocused = hasFocus;
   
     if(hasFocus) {
           getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
       } else {
-          getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
-                  WindowManager.LayoutParams.FLAG_SECURE);
+          getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
       }
   
     if (isBackPressed && !hasFocus) {
