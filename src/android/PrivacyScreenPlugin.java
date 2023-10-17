@@ -23,6 +23,11 @@ import android.view.WindowManager;
 // import android.content.Context;
 // import android.os.Bundle;
 
+import java.io.IOException; 
+import java.util.logging.Level; 
+import java.util.logging.Logger; 
+import java.util.logging.*;
+
 /**
  * This class sets the FLAG_SECURE flag on the window to make the app
  *  private when shown in the task switcher
@@ -52,6 +57,9 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
 
   @Override
   public void onPause(boolean multitasking) {
+    Logger logger = Logger.getLogger("Test log");
+    logger.info("onPause() triggered");
+    // LOGGER.log(Level.INFO, "onPause() triggered");
     Window window = this.cordova.getActivity().getWindow();
     window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
     super.onPause(multitasking);
@@ -59,6 +67,7 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
 
   @Override
   public void onResume(boolean multitasking) {
+    // LOGGER.log(Level.INFO, "onResume() triggered");
     Window window = this.cordova.getActivity().getWindow();
     window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
     super.onResume(multitasking);
