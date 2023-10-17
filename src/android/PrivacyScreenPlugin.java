@@ -7,6 +7,7 @@
 package org.devgeeks.privacyscreen;
 
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CordovaActivity;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;
 
@@ -37,7 +38,7 @@ import android.widget.Toast;
  *  private when shown in the task switcher
  */
 
-public class PrivacyScreenPlugin extends CordovaPlugin {
+public class PrivacyScreenPlugin extends CordovaActivity {
 
   // @Override
   // public void initialize(CordovaInterface cordova, CordovaWebView webView) {
