@@ -22,11 +22,11 @@ public class PrivacyScreenPlugin extends CordovaActivity {
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
         if (hasFocus) {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
         } else {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
         }
+        super.onWindowFocusChanged(hasFocus);
     }
 }
