@@ -20,7 +20,10 @@ import android.view.WindowManager;
  *  private when shown in the task switcher
  */
 
-public class PrivacyScreenPlugin extends CordovaActivity implements CordovaPlugin {
+public interface Gabungan extends CordovaPlugin {  
+}  
+
+public class PrivacyScreenPlugin extends CordovaActivity implements Gabungan {
 
   @Override
    public void onWindowFocusChanged(boolean hasFocus) {
