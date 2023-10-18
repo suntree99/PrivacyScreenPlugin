@@ -6,14 +6,10 @@
  */
 package org.devgeeks.privacyscreen;
 
-import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.CordovaInterface;
-import org.apache.cordova.CordovaWebView;
-import org.apache.cordova.CordovaActivity;
-
-import android.view.Window;
+import android.os.Bundle;
 import android.view.WindowManager;
 
+import org.apache.cordova.CordovaActivity;
 
 /**
  * This class sets the FLAG_SECURE flag on the window to make the app
@@ -22,24 +18,28 @@ import android.view.WindowManager;
 
 public class PrivacyScreenPlugin extends CordovaActivity {
 
-  @Override
-   public void onWindowFocusChanged(boolean hasFocus) {
-     
-    // isWindowFocused = hasFocus;
-  
-    if(hasFocus) {
-          Window window = getWindow();
-          window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
-      } else {
-          Window window = getWindow();
-          window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
-      }
-  
-    // if (isBackPressed && !hasFocus) {
-    //  isBackPressed = false;
-    //  isWindowFocused = true;
-    // }
-  
-    super.onWindowFocusChanged(hasFocus);
-   }
+    @Override
+    public void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+
+        // enable Cordova apps to be started in the background
+        Bundle extras = getIntent().getExtras();
+        if (extras != null && extras.getBoolean("cdvStartInBackground", false)) {
+            moveTaskToBack(true);
+        }
+
+        // Set by <content src="index.html" /> in config.xml
+        loadUrl(launchUrl);
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        } else {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        }
+    }
 }
