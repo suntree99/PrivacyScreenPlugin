@@ -6,6 +6,7 @@
  */
 package org.devgeeks.privacyscreen;
 
+import org.devgeeks.privacyscreen.CordovaPlugin;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;
 
