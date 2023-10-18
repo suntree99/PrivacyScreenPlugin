@@ -6,41 +6,30 @@
  */
 package org.devgeeks.privacyscreen;
 
-import android.os.Bundle;
+import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CordovaInterface;
+import org.apache.cordova.CordovaWebView;
+
 import android.view.Window;
 import android.view.WindowManager;
-
-import org.apache.cordova.CordovaActivity;
 
 /**
  * This class sets the FLAG_SECURE flag on the window to make the app
  *  private when shown in the task switcher
  */
+public class PrivacyScreenPlugin extends CordovaPlugin {
 
-public class PrivacyScreenPlugin extends CordovaActivity
-{
-    @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
+  @Override
+  public void onPause(boolean multitasking) {
+    Window window = this.cordova.getActivity().getWindow();
+    window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+    super.onPause(multitasking);
+  }
 
-        // enable Cordova apps to be started in the background
-        Bundle extras = getIntent().getExtras();
-        if (extras != null && extras.getBoolean("cdvStartInBackground", false)) {
-            moveTaskToBack(true);
-        }
-
-        // Set by <content src="index.html" /> in config.xml
-        loadUrl(launchUrl);
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
-        } else {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-        }
-    }
+  @Override
+  public void onResume(boolean multitasking) {
+    Window window = this.cordova.getActivity().getWindow();
+    window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+    super.onResume(multitasking);
+  }
 }
