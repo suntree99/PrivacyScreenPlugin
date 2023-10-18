@@ -9,7 +9,7 @@ package org.devgeeks.privacyscreen;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import org.apache.cordova.CordovaActivity;
+import org.apache.cordova.*;
 
 /**
  * This class sets the FLAG_SECURE flag on the window to make the app
