@@ -6,7 +6,6 @@
  */
 package org.devgeeks.privacyscreen;
 
-import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;
 
@@ -19,17 +18,13 @@ import android.view.WindowManager;
  */
 public class PrivacyScreenPlugin extends CordovaPlugin {
 
-  @Override
-  public void onPause(boolean multitasking) {
-    Window window = this.cordova.getActivity().getWindow();
-    window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-    super.onPause(multitasking);
-  }
-
-  @Override
-  public void onResume(boolean multitasking) {
-    Window window = this.cordova.getActivity().getWindow();
-    window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
-    super.onResume(multitasking);
-  }
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        } else {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+        }
+    }
 }
