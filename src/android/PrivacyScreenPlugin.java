@@ -28,10 +28,10 @@ public class PrivacyScreenPlugin extends CordovaActivity {
     // isWindowFocused = hasFocus;
   
     if(hasFocus) {
-          Window window = this.cordova.getActivity().getWindow();
+          Window window = getWindow();
           window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
       } else {
-          Window window = this.cordova.getActivity().getWindow();
+          Window window = getWindow();
           window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
       }
   
