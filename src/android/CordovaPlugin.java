@@ -460,4 +460,12 @@ public class CordovaPlugin extends CordovaActivity {
     public boolean onRenderProcessGone(final WebView view, RenderProcessGoneDetail detail) {
         return false;
     }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus && immersiveMode) {
+            setImmersiveUiVisibility();
+        }
+    }
 }
