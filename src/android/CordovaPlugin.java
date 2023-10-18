@@ -16,7 +16,7 @@
        specific language governing permissions and limitations
        under the License.
 */
-package org.apache.cordova;
+package org.devgeeks.privacyscreen;
 
 import org.apache.cordova.CordovaActivity;
 import org.apache.cordova.CordovaArgs;
