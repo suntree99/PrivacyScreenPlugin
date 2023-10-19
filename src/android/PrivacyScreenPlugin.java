@@ -6,39 +6,24 @@
  */
 package org.devgeeks.privacyscreen;
 
-import org.apache.cordova.CordovaActivity;
-import org.apache.cordova.CordovaInterface;
-import org.apache.cordova.CordovaWebView;
-
-import android.view.Window;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 /**
  * This class sets the FLAG_SECURE flag on the window to make the app
  *  private when shown in the task switcher
  */
-public class PrivacyScreenPlugin extends CordovaActivity {
+public class PrivacyScreenPlugin extends AppCompatActivity {
 
-  @Override
-  public void onWindowFocusChanged(boolean hasFocus) {
-      super.onWindowFocusChanged(hasFocus);
-      if (hasFocus && immersiveMode) {
-          setImmersiveUiVisibility();
-      }
-  }
-
-
-  // @Override
-  // public void onPause(boolean multitasking) {
-  //   Window window = this.cordova.getActivity().getWindow();
-  //   window.addFlags(WindowManager.LayoutParams.FLAG_SECURE);
-  //   super.onPause(multitasking);
-  // }
-
-  // @Override
-  // public void onResume(boolean multitasking) {
-  //   Window window = this.cordova.getActivity().getWindow();
-  //   window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
-  //   super.onResume(multitasking);
-  // }
+   @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+      WindowManager.LayoutParams.FLAG_SECURE);
+      setContentView(R.layout.activity_main);
+   }
 }
