@@ -18,6 +18,7 @@
 */
 package org.apache.cordova;
 
+import org.apache.cordova.CordovaActivity;
 import org.apache.cordova.CordovaArgs;
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CordovaInterface;
@@ -40,7 +41,7 @@ import java.io.IOException;
 /**
  * Plugins must extend this class and override one of the execute methods.
  */
-public class CordovaPlugin {
+public class CordovaPlugin extends CordovaActivity{
     public CordovaWebView webView;
     public CordovaInterface cordova;
     protected CordovaPreferences preferences;
