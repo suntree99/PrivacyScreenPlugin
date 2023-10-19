@@ -24,6 +24,6 @@ public class PrivacyScreenPlugin extends AppCompatActivity {
       super.onCreate(savedInstanceState);
       getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
       WindowManager.LayoutParams.FLAG_SECURE);
-      setContentView(R.layout.activity_main);
+      // setContentView(R.layout.activity_main);
    }
 }
